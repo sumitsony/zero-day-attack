@@ -6,30 +6,35 @@
 - Where retrieval quality breaks and how to measure it
 
 ## Key ideas
-- RAG doesn't train the model; it injects relevant context into the prompt at query time [citation:1][citation:6]
+- RAG doesn't train the model; it injects relevant context into the prompt at query time
 - The retriever is the new attack surface: anything in the corpus can become "trusted context"
 - Citations and metadata matter — the LLM needs to know *where* a chunk came from
 
-## Basic pipeline
-1. **Source data** — docs, PDFs, Git repos, SQL
-2. **Chunking** — split into manageable pieces
-3. **Embedding** — convert chunks to vectors
-4. **Store** — vector DB with metadata
-5. **Retrieve** — similarity search against user query
-6. **Generate** — prompt = system + retrieved chunks + user question [citation:1]
+## Pipeline
+1. Source data — docs, PDFs, Git repos, SQL
+2. Chunking — split into manageable pieces
+3. Embedding — convert chunks to vectors
+4. Store — vector DB with metadata
+5. Retrieve — similarity search against user query
+6. Generate — prompt = system + retrieved chunks + user question
+
+## v1 vs v2
+- `code/basic_rag.py` — stdlib-only smoke test, fake embeddings, mock generation
+- `code/rag_core.py` + `code/rag_cli.py` — real embeddings (sentence-transformers), pluggable LLM providers
 
 ## Learning order
-1. Build a naive RAG (this folder's `code/`)
-2. Break it: what happens with bad chunking? No metadata?
-3. Read OWASP LLM09 (Vector & Embedding Weaknesses) [citation:5][citation:13]
-4. Study corpus poisoning (DenialRAG, PoisonCraft) [citation:2][citation:3]
-5. Add a defense layer and test again
+1. Run v1 (`basic_rag.py`) to see the pipeline shape
+2. Run v2 CLI against Ollama
+3. Run v2 CLI against cloud providers (Gemini, Groq)
+4. Read OWASP LLM09 (Vector & Embedding Weaknesses)
+5. Study corpus poisoning (DenialRAG, PoisonCraft)
+6. Run the poison experiment and compare providers
 
 ## Links
-- Microsoft Learn: RAG concepts [citation:1]
-- OWASP Top 10 for LLM Apps 2026 [citation:5]
-- DenialRAG (corpus poisoning) [citation:2]
-- PoisonCraft (practical poisoning) [citation:3]
+- Microsoft Learn: RAG concepts
+- OWASP Top 10 for LLM Apps 2026
+- DenialRAG (corpus poisoning)
+- PoisonCraft (practical poisoning)
 
 ## Red-team angle
 Corpus poisoning and context injection. See `redteam.md`.
