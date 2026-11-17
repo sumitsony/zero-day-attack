@@ -1,3 +1,39 @@
+# Environments
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Secrets & keys
+.env
+.env.*
+*.key
+*.pem
+
+# Data & models
+data/
+*.csv
+*.parquet
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.h5
+*.pkl
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
