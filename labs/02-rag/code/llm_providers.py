@@ -34,10 +34,10 @@ PROVIDERS: dict[str, ProviderConfig] = {
         note="local, unlimited, baseline",
     ),
     "gemini": ProviderConfig(
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-        api_key_env="GEMINI_API_KEY",
-        default_model="gemini-2.5-flash",
-        note="free tier, best quality",
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    api_key_env="GEMINI_API_KEY",
+    default_model="gemini-3.8-flash",
+    note="free tier, 3.x requires thought_signature for tool calling",
     ),
     "groq": ProviderConfig(
         base_url="https://api.groq.com/openai/v1",
