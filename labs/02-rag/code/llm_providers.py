@@ -11,10 +11,11 @@ CAVEATS
 """
 import os
 from dataclasses import dataclass
+from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path=Path(__file__).parent / ".env")
 
 
 @dataclass
@@ -55,6 +56,12 @@ PROVIDERS: dict[str, ProviderConfig] = {
         api_key_env="COHERE_API_KEY",
         default_model="command-r7b-12-2024",
         note="trial key, 1000 calls/month",
+    ),
+    "zai": ProviderConfig(
+    base_url="https://api.z.ai/api/paas/v4",
+    api_key_env="ZAI_API_KEY",
+    default_model="glm-4.7-flash",
+    note="free tier: input/output/cache free, 200K context",
     ),
 }
 
