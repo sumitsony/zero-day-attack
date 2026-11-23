@@ -40,10 +40,10 @@ PROVIDERS: dict[str, ProviderConfig] = {
     note="free tier, 3.x requires thought_signature for tool calling",
     ),
     "groq": ProviderConfig(
-        base_url="https://api.groq.com/openai/v1",
-        api_key_env="GROQ_API_KEY",
-        default_model="llama-3.3-70b-versatile",
-        note="free tier, fastest",
+    base_url="https://api.groq.com/openai/v1",
+    api_key_env="GROQ_API_KEY",
+    default_model="openai/gpt-oss-120b",  # was llama-3.3-70b-versatile
+    note="free tier, 30 RPM",
     ),
     "mistral": ProviderConfig(
         base_url="https://api.mistral.ai/v1",
